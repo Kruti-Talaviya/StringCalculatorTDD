@@ -21,7 +21,7 @@ function add(numbers) {
     }
 
     // Sum the numbers
-    return parts.reduce((sum, num) => sum + num, 0);
+    return parts.filter(n => n <= 1000).reduce((sum, num) => sum + num, 0);
   }
   
   module.exports = { add };
