@@ -18,7 +18,10 @@ describe('add',()=>{
   it('return sum of any comma-seprated numbers',()=>{
     expect(add("1,2,3")).toBe(6);
   });
-
+  
+  it('handle new line as separator',()=>{
+     expect(add("1\n2,3")).toBe(6);
+  });
 })
 
 
