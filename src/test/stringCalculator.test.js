@@ -38,7 +38,7 @@ describe('add',()=>{
   test(`throws error for negative numbers: input = "${input7}"`, () => {
     expect(() => add(input7)).toThrow("negative numbers not allowed: -2, -3");
   });
-
+           
   const input8 = "2,1001";
   test(`ignores numbers > 1000: input = "${input8}"`, () => {
     expect(add(input8)).toBe(2);
