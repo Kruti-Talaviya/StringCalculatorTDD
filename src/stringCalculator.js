@@ -10,12 +10,18 @@ function add(numbers) {
       delimiter = new RegExp(parts[0].slice(2));  
       numbers = parts[1];
     }
-    
+
     // Extract numbers
-    const parts = numbers.split(delimiter);
+    const parts = numbers.split(delimiter).map(Number);
+
+    //Check if any nagetive number is there or not
+    const negatives = parts.filter(n => n < 0);
+    if (negatives.length) {
+      throw new Error("negative numbers not allowed: " + negatives.join(", "));
+    }
 
     // Sum the numbers
-    return parts.reduce((sum,num)=>sum + parseInt(num),0);
+    return parts.reduce((sum, num) => sum + num, 0);
   }
   
   module.exports = { add };

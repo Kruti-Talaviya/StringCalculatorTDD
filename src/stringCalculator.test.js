@@ -26,6 +26,12 @@ describe('add',()=>{
   it('custom delimiter', () => {
   expect(add("//;\n1;2")).toBe(3);
   });
+
+  // we can use test() also insted of it()
+  test('throws error for negative numbers', () => {
+  expect(() => add("1,-2,-3")).toThrow("negative numbers not allowed: -2, -3");
+  });
+
 })
 
 
