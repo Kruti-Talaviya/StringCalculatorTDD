@@ -4,15 +4,26 @@ function add(numbers) {
     if (numbers === "") return 0;
 
     // Extract custom delimiter
-    let delimiter = /,|\n/;
+    let delimiters = [",", "\n"];
     if (numbers.startsWith("//")) {
-      const parts = numbers.split("\n");
-      delimiter = new RegExp(parts[0].slice(2));  
-      numbers = parts[1];
-    }
+    const dSectionEnd = numbers.indexOf("\n");
+    const delimiterSection = numbers.substring(2, dSectionEnd);
+    numbers = numbers.substring(dSectionEnd + 1);
 
+    const matches = delimiterSection.match(/\[(.*?)\]/g);
+    if (matches) {
+      delimiters = matches.map(d => d.slice(1, -1));
+    } else {
+      delimiters = [delimiterSection];
+    }
+    }
+    const escaped = delimiters.map(d =>
+    d.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&")
+    );
+    const regex = new RegExp(escaped.join("|"), "g");
+    
     // Extract numbers
-    const parts = numbers.split(delimiter).map(Number);
+     const parts = numbers.split(regex).map(Number);
 
     //Check if any nagetive number is there or not
     const negatives = parts.filter(n => n < 0);
