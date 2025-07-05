@@ -96,7 +96,7 @@ Here’s a screenshot of the test result:
 
 </p>
 
-## ❌ Output when an error doesn't occur
+## ✅ Output when an error doesn't occur
       const input5 = "1\n2,3";
       it(`handle new line as separator: input = "${input5.replace('\n', '\\n')}"`,()=>{
          expect(add(input5)).toBe(6);
