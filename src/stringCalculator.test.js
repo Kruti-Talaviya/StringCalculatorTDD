@@ -1,6 +1,7 @@
 
 const { add } = require('./stringCalculator');
 
+// we are using describe , that use to group multiple test cases of same type or function
 describe('add',()=>{
 
   it('returns 0 for empty string', () => {
@@ -39,6 +40,15 @@ describe('add',()=>{
   test('supports delimiters of any length', () => {
   expect(add("//[***]\n1***2***3")).toBe(6);
   });
+
+  test('supports multiple delimiters', () => {
+  expect(add("//[*][%]\n1*2%3")).toBe(6);
+  });
+
+  test('supports multi-character multiple delimiters', () => {
+    expect(add("//[***][%%]\n1***2%%3")).toBe(6);
+  });
+
 
 })
 
