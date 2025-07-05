@@ -1,5 +1,5 @@
 
-const { add } = require('./stringCalculator');
+const { add } = require('../stringCalculator');
 
 // we are using describe , that use to group multiple test cases of same type or function
 describe('add',()=>{
